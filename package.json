@@ -43,5 +43,10 @@
     "eslint-plugin-react-native": "^3.8.1",
     "jest-expo": "~36.0.1"
   },
+  "prettier": {
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true
+  },
   "private": true
 }
