@@ -9,7 +9,7 @@ export default function(containerRef) {
         path: 'root',
         screens: {
           Home: 'home',
-          Links: 'links',
+          Decks: 'decks',
           Settings: 'settings',
         },
       },
