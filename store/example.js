@@ -2,7 +2,7 @@ const decks = {
   React: {
     id: 'React',
     title: 'React',
-    questions: {
+    cards: {
       '001': {
         id: '001',
         question: 'What is React?',
@@ -24,7 +24,7 @@ const decks = {
   JavaScript: {
     id: 'JavaScript',
     title: 'JavaScript',
-    questions: {
+    cards: {
       '003': {
         id: '003',
         question: 'What is a closure?',
