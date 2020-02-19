@@ -4,10 +4,12 @@ import { StyleSheet, Text, View } from 'react-native';
 
 function Deck(props) {
   const { deck } = props;
+  const cardCount = Object.keys(deck.cards).length;
 
   return (
     <View style={styles.container}>
-      <Text>{JSON.stringify(deck)}</Text>
+      <Text>{deck.title}</Text>
+      <Text>{cardCount} card{cardCount !== 1 && 's'}</Text>
     </View>
   );
 }
