@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import DeckView from './DeckView';
 
-function DeckPreview(props) {
+function DeckListItem(props) {
   const navigation = useNavigation();
   const handlePress = () => {
     navigation.push('Deck', { id: props.id });
@@ -17,4 +17,4 @@ function DeckPreview(props) {
   );
 }
 
-export default DeckPreview;
+export default DeckListItem;
