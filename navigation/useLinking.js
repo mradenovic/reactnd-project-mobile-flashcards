@@ -8,9 +8,7 @@ export default function(containerRef) {
       Root: {
         path: 'root',
         screens: {
-          Home: 'home',
           Decks: 'decks',
-          Settings: 'settings',
         },
       },
     },
