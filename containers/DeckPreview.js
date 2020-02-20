@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import DeckView from './DeckView';
 
 function DeckPreview(props) {
+  const navigation = useNavigation();
   const handlePress = () => {
-    console.log('open deck view');
+    navigation.push('Deck', { id: props.id });
   };
 
 
