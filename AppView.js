@@ -9,6 +9,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import { navigationRef as containerRef} from './navigation/RootNavigation';
 import DeckScreen from './screens/DeckScreen';
+import QuizScreen from './screens/QuizScreen';
+import CardFormScreen from './screens/CardFormScreen';
 import useLinking from './navigation/useLinking';
 
 const Stack = createStackNavigator();
@@ -55,6 +57,8 @@ export default function AppView(props) {
           <Stack.Navigator>
             <Stack.Screen name="Root" component={BottomTabNavigator} />
             <Stack.Screen name="Deck" component={DeckScreen} />
+            <Stack.Screen name="Quiz" component={QuizScreen} />
+            <Stack.Screen name="Add Card" component={CardFormScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </View>

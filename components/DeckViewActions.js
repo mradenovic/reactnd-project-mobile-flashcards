@@ -11,7 +11,7 @@ function DeckViewActions(props) {
   }
 
   function handleAddCard() {
-    RootNavigation.push('CardForm', { id });
+    RootNavigation.push('Add Card', { id });
   }
   return (
     <View style={styles.container}>
