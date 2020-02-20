@@ -1,31 +1,18 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+import DeckView from './DeckView';
 
-function Deck(props) {
-  const { deck } = props;
-  const cardCount = Object.keys(deck.cards).length;
+function DeckPreview(props) {
+  const handlePress = () => {
+    console.log('open deck view');
+  };
+
 
   return (
-    <View style={styles.container}>
-      <Text>{deck.title}</Text>
-      <Text>{cardCount} card{cardCount !== 1 && 's'}</Text>
-    </View>
+    <TouchableOpacity onPress={handlePress} >
+      <DeckView id={props.id} />
+    </TouchableOpacity>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    padding: 10,
-    alignItems: 'center',
-    flex: 1,
-  }
-});
-
-function mapStateToProps({ decks }, { id }) {
-  return {
-    deck: decks[id]
-  };
-}
-
-export default connect(mapStateToProps)(Deck);
+export default DeckPreview;
