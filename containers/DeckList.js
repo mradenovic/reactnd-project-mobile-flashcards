@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { View, FlatList } from 'react-native';
-import Deck from './Deck';
+import DeckPreview from './DeckPreview';
 
 function DeckList(props) {
   const { decks } = props;
@@ -10,7 +10,7 @@ function DeckList(props) {
     <View >
       <FlatList
         data={decks}
-        renderItem={({ item }) => <Deck id={item} />}
+        renderItem={({ item }) => <DeckPreview id={item} />}
         keyExtractor={item => item}
       />
     </View>
