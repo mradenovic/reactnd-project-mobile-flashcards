@@ -9,7 +9,7 @@ function DeckRoute() {
 
   return (
     <View>
-      <DeckView id={id} />
+      <DeckView id={id} showActions/>
     </View>
   );
 }

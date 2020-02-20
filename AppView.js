@@ -7,6 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import BottomTabNavigator from './navigation/BottomTabNavigator';
+import { navigationRef as containerRef} from './navigation/RootNavigation';
 import DeckScreen from './screens/DeckScreen';
 import useLinking from './navigation/useLinking';
 
@@ -15,7 +16,7 @@ const Stack = createStackNavigator();
 export default function AppView(props) {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
   const [initialNavigationState, setInitialNavigationState] = React.useState();
-  const containerRef = React.useRef();
+  // const containerRef = React.useRef();
   const { getInitialState } = useLinking(containerRef);
 
   // Load any resources or data that we need prior to rendering the app
