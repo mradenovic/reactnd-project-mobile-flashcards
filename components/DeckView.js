@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, Text, View } from 'react-native';
+import colors from '../constants/Colors';
 
 function DeckView(props) {
   const { deck } = props;
@@ -16,7 +17,7 @@ function DeckView(props) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
+    backgroundColor: colors.tabBar,
     margin: 10,
     padding: 10,
     alignItems: 'center',
