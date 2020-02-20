@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { View, StyleSheet } from 'react-native';
-import DeckRoute from '../containers/DeckRoute';
+import DeckRoute from '../components/DeckRoute';
 
 export default function DeckScreen() {
 

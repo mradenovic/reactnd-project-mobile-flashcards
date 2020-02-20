@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { View, StyleSheet } from 'react-native';
-import DeckList from '../containers/DeckList';
+import DeckList from '../components/DeckList';
 
 export default function DecksScreen() {
 
