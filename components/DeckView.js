@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 10,
     alignItems: 'center',
-    flex: 1,
   }
 });
 
