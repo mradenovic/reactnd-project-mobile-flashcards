@@ -7,8 +7,8 @@ export default function DeckInfo(props) {
 
   return (
     <View style={styles.container}>
-      <Text>{deck.title}</Text>
-      <Text>
+      <Text style={styles.title}>{deck.title}</Text>
+      <Text style={styles.subtitle}>
         {cardCount} card{cardCount !== 1 && 's'}
       </Text>
     </View>
@@ -20,5 +20,13 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 10,
     alignItems: 'center',
+  },
+  title: {
+    fontSize: 30,
+    fontWeight: 'bold',
+  },
+  subtitle: {
+    fontSize: 20,
+    fontWeight: '300',
   }
 });
