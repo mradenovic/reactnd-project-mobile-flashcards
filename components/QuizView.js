@@ -14,7 +14,7 @@ function QuizView(props) {
   const { correct, incorrect } = results;
 
   const cardCount = Object.keys(deck.cards).length;
-  const answeredCount = (correct.length + incorrect.length);
+  const answeredCount = correct.length + incorrect.length;
   const unansweredCards = Object.keys(deck.cards)
     .filter(key => !correct.includes(key) && !incorrect.includes(key))
     .map(key => deck.cards[key]);
@@ -32,10 +32,8 @@ function QuizView(props) {
 
   return (
     <View style={styles.container}>
-      <Text>
-        {deck.title}
-      </Text>
-      <Text>
+      <Text style={styles.title}>{deck.title}</Text>
+      <Text style={styles.subtitle}>
         {answeredCount} of {cardCount} cards answered
       </Text>
       {card && <QuizCardView card={card} handleResults={handleResults} />}
@@ -49,7 +47,15 @@ const styles = StyleSheet.create({
     backgroundColor: colors.tabBar,
     margin: 10,
     padding: 10,
-    alignItems: 'center',
+    alignItems: 'center'
+  },
+  title: {
+    fontSize: 30,
+    fontWeight: 'bold',
+  },
+  subtitle: {
+    fontSize: 20,
+    fontWeight: '300',
   }
 });
 
