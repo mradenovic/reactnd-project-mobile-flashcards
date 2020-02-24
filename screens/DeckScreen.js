@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { View, StyleSheet } from 'react-native';
-import DeckRoute from '../components/DeckRoute';
+import DeckView from '../components/DeckView';
 
-export default function DeckScreen() {
+export default function DeckScreen({ route }) {
+  const { id } = route.params;
 
   return (
     <View style={styles.container}>
-      <DeckRoute />
+      <DeckView id={id} showActions/>
     </View>
   );
 }
