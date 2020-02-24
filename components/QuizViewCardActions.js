@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, Button, View } from 'react-native';
-// import * as RootNavigation from '../navigation/RootNavigation';
-// import colors from '../constants/Colors';
 
-function DeckViewActions(props) {
+function QuizViewCardActions(props) {
   const { id, handleResults } = props;
 
   return (
@@ -20,4 +18,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default DeckViewActions;
+export default QuizViewCardActions;

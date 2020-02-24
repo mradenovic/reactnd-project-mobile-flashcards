@@ -2,9 +2,9 @@ import * as React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import FlipCard from 'react-native-flip';
 
-import QuizCardViewActions from './QuizCardViewActions';
+import QuizViewCardActions from './QuizViewCardActions';
 
-export default function QuizCardView(props) {
+export default function QuizViewCard(props) {
   const { card, handleResults } = props;
   const [side, setSide] = React.useState(0);
 
@@ -23,7 +23,7 @@ export default function QuizCardView(props) {
           back={<Text style={styles.text}>A: {card.answer}</Text>}
         />
       </TouchableOpacity>
-      <QuizCardViewActions id={card.id} handleResults={handleResults} />
+      <QuizViewCardActions id={card.id} handleResults={handleResults} />
     </View>
   );
 }

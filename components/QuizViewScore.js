@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View, Text, Button } from 'react-native';
 
-export default function QuizScoreView(props) {
+export default function QuizViewScore(props) {
   const { results, handleSubmit } = props;
   const { correct, incorrect } = results;
 

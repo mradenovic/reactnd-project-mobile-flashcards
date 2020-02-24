@@ -2,8 +2,8 @@ import * as React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import colors from '../constants/Colors';
 import connectWithDeck from '../navigation/withDeck';
-import QuizCardView from './QuizCardView';
-import QuizScoreView from './QuizScoreView';
+import QuizViewCard from './QuizViewCard';
+import QuizViewScore from './QuizViewScore';
 
 function QuizView(props) {
   const { deck } = props;
@@ -36,8 +36,8 @@ function QuizView(props) {
       <Text style={styles.subtitle}>
         {answeredCount} of {cardCount} cards answered
       </Text>
-      {card && <QuizCardView card={card} handleResults={handleResults} />}
-      {!card && <QuizScoreView results={results} handleSubmit={handleSubmit} />}
+      {card && <QuizViewCard card={card} handleResults={handleResults} />}
+      {!card && <QuizViewScore results={results} handleSubmit={handleSubmit} />}
     </View>
   );
 }
