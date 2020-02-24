@@ -9,6 +9,7 @@ export default function(containerRef) {
         path: 'root',
         screens: {
           Decks: 'decks',
+          'Add Deck': 'add-deck'
         },
       },
     },

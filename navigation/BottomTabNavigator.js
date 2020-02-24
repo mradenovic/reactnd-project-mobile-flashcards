@@ -2,6 +2,7 @@ import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TabBarIcon from '../components/TabBarIcon';
 import DecksScreen from '../screens/DecksScreen';
+import DeckFormScreen from '../screens/DeckFormScreen';
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Decks';
@@ -19,7 +20,19 @@ export default function BottomTabNavigator({ navigation, route }) {
         component={DecksScreen}
         options={{
           title: 'Decks',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-albums" />,
+          tabBarIcon: ({ focused }) => (
+            <TabBarIcon focused={focused} name="md-albums" />
+          )
+        }}
+      />
+      <BottomTab.Screen
+        name="Add Deck"
+        component={DeckFormScreen}
+        options={{
+          title: 'Add Deck',
+          tabBarIcon: ({ focused }) => (
+            <TabBarIcon focused={focused} name="md-add-circle" />
+          )
         }}
       />
     </BottomTab.Navigator>
@@ -27,12 +40,13 @@ export default function BottomTabNavigator({ navigation, route }) {
 }
 
 function getHeaderTitle(route) {
-  const routeName = route.state?.routes[route.state.index]?.name ?? INITIAL_ROUTE_NAME;
+  const routeName =
+    route.state?.routes[route.state.index]?.name ?? INITIAL_ROUTE_NAME;
 
   switch (routeName) {
-    case 'Home':
-      return 'How to get started';
     case 'Decks':
       return 'Decks';
+    case 'Add Deck':
+      return 'Add Deck';
   }
 }
