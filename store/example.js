@@ -14,7 +14,7 @@ const decks = {
         answer: 'The componentDidMount lifecycle event'
       }
     },
-    results: {
+    scores: {
       '2020-02-20': {
         correct: ['001'],
         incorrect: ['002']
@@ -32,7 +32,7 @@ const decks = {
           'The combination of a function and the lexical environment within which that function was declared.'
       }
     },
-    results: {
+    scores: {
       '2020-02-20': {
         correct: ['003'],
         incorrect: []

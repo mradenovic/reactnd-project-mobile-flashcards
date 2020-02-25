@@ -2,8 +2,8 @@ import * as React from 'react';
 import { View, Text, Button } from 'react-native';
 
 export default function QuizViewScore(props) {
-  const { results, handleSubmit } = props;
-  const { correct, incorrect } = results;
+  const { score, handleSubmit } = props;
+  const { correct, incorrect } = score;
 
   return (
     <View>

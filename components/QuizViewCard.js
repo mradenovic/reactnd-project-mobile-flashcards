@@ -5,7 +5,7 @@ import FlipCard from 'react-native-flip';
 import QuizViewCardActions from './QuizViewCardActions';
 
 export default function QuizViewCard(props) {
-  const { card, handleResults } = props;
+  const { card, handleScores } = props;
   const [side, setSide] = React.useState(0);
 
   return (
@@ -23,7 +23,7 @@ export default function QuizViewCard(props) {
           back={<Text style={styles.text}>A: {card.answer}</Text>}
         />
       </TouchableOpacity>
-      <QuizViewCardActions id={card.id} handleResults={handleResults} />
+      <QuizViewCardActions id={card.id} handleScores={handleScores} />
     </View>
   );
 }

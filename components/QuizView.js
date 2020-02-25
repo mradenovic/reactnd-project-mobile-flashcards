@@ -4,15 +4,15 @@ import colors from '../constants/Colors';
 import connectWithDeck from '../navigation/withDeck';
 import QuizViewCard from './QuizViewCard';
 import QuizViewScore from './QuizViewScore';
-import { addResult } from '../store';
+import { addScore } from '../store';
 
 function QuizView(props) {
   const { deck, dispatch, navigation } = props;
-  const [results, setResults] = React.useState({
+  const [score, setScore] = React.useState({
     correct: [],
     incorrect: []
   });
-  const { correct, incorrect } = results;
+  const { correct, incorrect } = score;
 
   const cardCount = Object.keys(deck.cards).length;
   const answeredCount = correct.length + incorrect.length;
@@ -21,18 +21,18 @@ function QuizView(props) {
     .map(key => deck.cards[key]);
   const card = unansweredCards[0];
 
-  function handleResults(key, id) {
+  function handleScores(key, id) {
     return () => {
-      setResults({ ...results, [key]: [...results[key], id] });
+      setScore({ ...score, [key]: [...score[key], id] });
     };
   }
 
   function handleSubmit() {
-    dispatch(addResult({
+    dispatch(addScore({
       id: deck.id,
-      result: {
+      score: {
         id: 'xxx',
-        ...results
+        ...score
       }
     }));
     navigation.goBack();
@@ -44,8 +44,8 @@ function QuizView(props) {
       <Text style={styles.subtitle}>
         {answeredCount} of {cardCount} cards answered
       </Text>
-      {card && <QuizViewCard card={card} handleResults={handleResults} />}
-      {!card && <QuizViewScore results={results} handleSubmit={handleSubmit} />}
+      {card && <QuizViewCard card={card} handleScores={handleScores} />}
+      {!card && <QuizViewScore score={score} handleSubmit={handleSubmit} />}
     </View>
   );
 }

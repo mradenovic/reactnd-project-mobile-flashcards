@@ -15,13 +15,13 @@ const decks = createSlice({
       const { id, card } = action.payload;
       state[id].cards[card.id] = card;
     },
-    addResult(state, action ) {
-      const { id,  result } = action.payload;
-      state[id].results[result.id] = result;
+    addScore(state, action ) {
+      const { id,  score } = action.payload;
+      state[id].scores[score.id] = score;
     }
   }
 });
 
-export const { initDecks, addDeck, addCard, addResult } = decks.actions;
+export const { initDecks, addDeck, addCard, addScore } = decks.actions;
 
 export default decks.reducer;

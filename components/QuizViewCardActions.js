@@ -2,12 +2,12 @@ import * as React from 'react';
 import { StyleSheet, Button, View } from 'react-native';
 
 function QuizViewCardActions(props) {
-  const { id, handleResults } = props;
+  const { id, handleScores } = props;
 
   return (
     <View style={styles.container}>
-      <Button color="green" title="Correct" onPress={handleResults('correct', id)} />
-      <Button color="red" title="Incorrect" onPress={handleResults('incorrect', id)} />
+      <Button color="green" title="Correct" onPress={handleScores('correct', id)} />
+      <Button color="red" title="Incorrect" onPress={handleScores('incorrect', id)} />
     </View>
   );
 }

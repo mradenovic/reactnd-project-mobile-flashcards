@@ -15,7 +15,7 @@ function DeckForm({ dispatch, navigation }) {
     id: '',
     title: '',
     cards: {},
-    results: {}
+    scores: {}
   });
 
   function handleChangeText(key) {
