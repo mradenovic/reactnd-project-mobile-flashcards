@@ -2,10 +2,10 @@ import * as React from 'react';
 import { View, StyleSheet } from 'react-native';
 import DeckForm from  '../components/DeckForm';
 
-export default function DeckFormScreen() {
+export default function DeckFormScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <DeckForm></DeckForm>
+      <DeckForm navigation={navigation} />
     </View>
   );
 }

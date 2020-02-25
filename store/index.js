@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import rootReducer from './reducers';
-import { initDecks } from './reducers/decks';
+import { initDecks, addDeck } from './reducers/decks';
 
 const store = configureStore({
   reducer: rootReducer
@@ -8,4 +8,4 @@ const store = configureStore({
 
 export default store;
 
-export { initDecks };
+export { initDecks, addDeck };

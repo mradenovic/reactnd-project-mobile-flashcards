@@ -8,8 +8,9 @@ import {
   Button
 } from 'react-native';
 import colors from '../constants/Colors';
+import { addDeck } from '../store';
 
-function DeckForm(props) {
+function DeckForm({ dispatch, navigation }) {
   const [state, setState] = React.useState({
     id: '',
     title: '',
@@ -19,12 +20,13 @@ function DeckForm(props) {
 
   function handleChangeText(key) {
     return text => {
-      setState({ ...state, [key]: text });
+      setState({ ...state, [key]: text, id: text });
     };
   }
 
   function handleSubmit() {
-    console.log('submit data to store', state);
+    dispatch(addDeck(state));
+    navigation.goBack();
   }
 
   return (
@@ -34,7 +36,7 @@ function DeckForm(props) {
         style={styles.input}
         placeholder="Deck Title"
         value={state.value}
-        onChangeText={handleChangeText('question')}
+        onChangeText={handleChangeText('title')}
       />
       <Button title="Submit" onPress={handleSubmit} />
     </KeyboardAvoidingView>
