@@ -6,12 +6,14 @@ export default function(containerRef) {
     prefixes: [Linking.makeUrl('/')],
     config: {
       Root: {
-        path: 'root',
         screens: {
-          Decks: 'decks',
-          'Add Deck': 'add-deck'
-        },
+          Decks:  'decks',
+          'Add Deck': 'decks/add-deck',
+        }
       },
+      Deck: 'decks/:id',
+      Quiz: 'decks/:id/quiz',
+      'Add Card': 'decks/:id/add-card',
     },
   });
 }
