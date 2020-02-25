@@ -14,7 +14,7 @@ function DeckForm({ dispatch, navigation }) {
   const [state, setState] = React.useState({
     id: '',
     title: '',
-    cards: [],
+    cards: {},
     results: {}
   });
 
