@@ -8,7 +8,7 @@ const decks = createSlice({
       return action.payload;
     },
     addDeck(state, action) {
-      const deck = action.payload;
+      const { deck } = action.payload;
       state[deck.id] = deck;
     },
     addCard(state, action) {

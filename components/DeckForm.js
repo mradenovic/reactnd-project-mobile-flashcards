@@ -21,12 +21,15 @@ function DeckForm({ dispatch, navigation }) {
 
   function handleChangeText(key) {
     return text => {
-      setState({ ...state, [key]: text, id: generateID() });
+      setState({ ...state, [key]: text });
     };
   }
 
   function handleSubmit() {
-    dispatch(addDeck(state));
+    dispatch(addDeck({ deck: {
+      id: generateID(),
+      ...state
+    }}));
     navigation.goBack();
   }
 
