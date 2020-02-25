@@ -8,8 +8,10 @@ import {
 import connectWithDeck from '../navigation/withDeck';
 import DeckInfo from './DeckInfo';
 import colors from '../constants/Colors';
+import { addCard } from '../store';
 
 function CardForm(props) {
+  const { dispatch, navigation } = props;
   const [state, setState] = React.useState({
     question: '',
     answer: ''
@@ -22,7 +24,14 @@ function CardForm(props) {
   }
 
   function handleSubmit() {
-    console.log('submit data to store', state);
+    dispatch(addCard({
+      id: props.deck.id,
+      card: {
+        id: 'xxx',
+        ...state
+      }
+    }));
+    navigation.goBack();
   }
 
   return (
