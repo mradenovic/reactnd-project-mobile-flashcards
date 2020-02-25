@@ -2,10 +2,10 @@ import * as React from 'react';
 import { View, StyleSheet } from 'react-native';
 import QuizView from '../components/QuizView';
 
-export default function QuizScreen() {
+export default function QuizScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <QuizView></QuizView>
+      <QuizView navigation={navigation} />
     </View>
   );
 }

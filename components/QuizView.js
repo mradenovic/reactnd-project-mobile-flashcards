@@ -4,9 +4,10 @@ import colors from '../constants/Colors';
 import connectWithDeck from '../navigation/withDeck';
 import QuizViewCard from './QuizViewCard';
 import QuizViewScore from './QuizViewScore';
+import { addResult } from '../store';
 
 function QuizView(props) {
-  const { deck } = props;
+  const { deck, dispatch, navigation } = props;
   const [results, setResults] = React.useState({
     correct: [],
     incorrect: []
@@ -27,7 +28,14 @@ function QuizView(props) {
   }
 
   function handleSubmit() {
-    console.log('submit results', results);
+    dispatch(addResult({
+      id: deck.id,
+      result: {
+        id: 'xxx',
+        ...results
+      }
+    }));
+    navigation.goBack();
   }
 
   return (

@@ -14,10 +14,14 @@ const decks = createSlice({
     addCard(state, action) {
       const { id, card } = action.payload;
       state[id].cards[card.id] = card;
+    },
+    addResult(state, action ) {
+      const { id,  result } = action.payload;
+      state[id].results[result.id] = result;
     }
   }
 });
 
-export const { initDecks, addDeck, addCard } = decks.actions;
+export const { initDecks, addDeck, addCard, addResult } = decks.actions;
 
 export default decks.reducer;
