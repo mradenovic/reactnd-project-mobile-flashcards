@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import colors from '../constants/Colors';
 import { addDeck } from '../store';
+import { generateID } from '../utils/helpers';
 
 function DeckForm({ dispatch, navigation }) {
   const [state, setState] = React.useState({
@@ -20,7 +21,7 @@ function DeckForm({ dispatch, navigation }) {
 
   function handleChangeText(key) {
     return text => {
-      setState({ ...state, [key]: text, id: text });
+      setState({ ...state, [key]: text, id: generateID() });
     };
   }
 

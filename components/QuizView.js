@@ -5,6 +5,7 @@ import connectWithDeck from '../navigation/withDeck';
 import QuizViewCard from './QuizViewCard';
 import QuizViewScore from './QuizViewScore';
 import { addScore } from '../store';
+import { timeToString } from '../utils/helpers';
 
 function QuizView(props) {
   const { deck, dispatch, navigation } = props;
@@ -31,7 +32,7 @@ function QuizView(props) {
     dispatch(addScore({
       id: deck.id,
       score: {
-        id: 'xxx',
+        id: timeToString(),
         ...score
       }
     }));

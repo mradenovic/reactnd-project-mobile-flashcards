@@ -9,6 +9,7 @@ import connectWithDeck from '../navigation/withDeck';
 import DeckInfo from './DeckInfo';
 import colors from '../constants/Colors';
 import { addCard } from '../store';
+import { generateID } from '../utils/helpers';
 
 function CardForm(props) {
   const { dispatch, navigation } = props;
@@ -27,7 +28,7 @@ function CardForm(props) {
     dispatch(addCard({
       id: props.deck.id,
       card: {
-        id: 'xxx',
+        id: generateID(),
         ...state
       }
     }));
