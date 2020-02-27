@@ -27,8 +27,8 @@ function DeckForm({ dispatch, navigation }) {
 
   function handleSubmit() {
     dispatch(addDeck({ deck: {
+      ...state,
       id: generateID(),
-      ...state
     }}));
     navigation.goBack();
   }
