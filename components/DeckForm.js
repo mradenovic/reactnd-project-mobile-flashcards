@@ -8,7 +8,7 @@ import {
   Button
 } from 'react-native';
 import colors from '../constants/Colors';
-import { addDeck } from '../store';
+import { asyncActions } from '../store';
 import { generateID } from '../utils/helpers';
 
 function DeckForm({ dispatch, navigation }) {
@@ -26,7 +26,7 @@ function DeckForm({ dispatch, navigation }) {
   }
 
   function handleSubmit() {
-    dispatch(addDeck({ deck: {
+    dispatch(asyncActions.addDeck({ deck: {
       ...state,
       id: generateID(),
     }}));

@@ -4,7 +4,7 @@ import colors from '../constants/Colors';
 import connectWithDeck from '../navigation/withDeck';
 import QuizViewCard from './QuizViewCard';
 import QuizViewScore from './QuizViewScore';
-import { addScore } from '../store';
+import { asyncActions } from '../store';
 import { timeToString } from '../utils/helpers';
 
 function QuizView(props) {
@@ -29,7 +29,7 @@ function QuizView(props) {
   }
 
   function handleSubmit() {
-    dispatch(addScore({
+    dispatch(asyncActions.addScore({
       id: deck.id,
       score: {
         id: timeToString(),

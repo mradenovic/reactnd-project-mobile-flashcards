@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import rootReducer from './reducers';
-import { initDecks, addDeck, addCard, addScore } from './reducers/decks';
+import * as deckActions from './reducers/decks';
+import * as asyncActions from './actions/async';
 
 const store = configureStore({
   reducer: rootReducer
@@ -8,4 +9,4 @@ const store = configureStore({
 
 export default store;
 
-export { initDecks, addDeck, addCard, addScore };
+export { deckActions, asyncActions };

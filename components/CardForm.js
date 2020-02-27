@@ -8,7 +8,7 @@ import {
 import connectWithDeck from '../navigation/withDeck';
 import DeckInfo from './DeckInfo';
 import colors from '../constants/Colors';
-import { addCard } from '../store';
+import { asyncActions } from '../store';
 import { generateID } from '../utils/helpers';
 
 function CardForm(props) {
@@ -25,7 +25,7 @@ function CardForm(props) {
   }
 
   function handleSubmit() {
-    dispatch(addCard({
+    dispatch(asyncActions.addCard({
       id: props.deck.id,
       card: {
         id: generateID(),
