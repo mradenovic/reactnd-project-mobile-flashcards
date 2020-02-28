@@ -25,12 +25,13 @@ function DeckForm({ dispatch, navigation }) {
     };
   }
 
-  function handleSubmit() {
-    dispatch(asyncActions.addDeck({ deck: {
+  async function handleSubmit() {
+    const id = generateID();
+    await dispatch(asyncActions.addDeck({ deck: {
       ...state,
-      id: generateID(),
+      id,
     }}));
-    navigation.goBack();
+    navigation.navigate('Deck', { id: id });
   }
 
   return (
