@@ -8,6 +8,13 @@ export default function QuizViewCard(props) {
   const { card, handleScores } = props;
   const [side, setSide] = React.useState(0);
 
+  function handleCardAction(key, id) {
+    return () => {
+      setSide(0);
+      handleScores(key, id);
+    };
+  }
+
   return (
     <View style={styles.container}>
       <TouchableOpacity
@@ -23,7 +30,7 @@ export default function QuizViewCard(props) {
           back={<Text style={styles.text}>A: {card.answer}</Text>}
         />
       </TouchableOpacity>
-      <QuizViewCardActions id={card.id} handleScores={handleScores} />
+      <QuizViewCardActions id={card.id} handleScores={handleCardAction} />
     </View>
   );
 }

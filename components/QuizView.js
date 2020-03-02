@@ -23,9 +23,7 @@ function QuizView(props) {
   const card = unansweredCards[0];
 
   function handleScores(key, id) {
-    return () => {
-      setScore({ ...score, [key]: [...score[key], id] });
-    };
+    setScore({ ...score, [key]: [...score[key], id] });
   }
 
   function handleSubmit() {
