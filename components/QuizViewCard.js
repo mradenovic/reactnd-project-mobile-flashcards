@@ -15,13 +15,15 @@ export default function QuizViewCard(props) {
     };
   }
 
+  function flipCard() {
+    setSide(side => (side === 0 ? 1 : 0));
+  }
+
   return (
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.text}
-        onPress={() => {
-          setSide(side => (side === 0 ? 1 : 0));
-        }}
+        onPress={flipCard}
       >
         <FlipCard
           style={styles.flipContainer}
@@ -30,7 +32,7 @@ export default function QuizViewCard(props) {
           back={<Text style={styles.text}>A: {card.answer}</Text>}
         />
       </TouchableOpacity>
-      <QuizViewCardActions id={card.id} handleScores={handleCardAction} />
+      <QuizViewCardActions id={card.id} handleScores={handleCardAction} flipCard={flipCard} />
     </View>
   );
 }
