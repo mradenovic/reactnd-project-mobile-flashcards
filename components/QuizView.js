@@ -37,6 +37,13 @@ function QuizView(props) {
     navigation.goBack();
   }
 
+  function handleReset() {
+    setScore({
+      correct: [],
+      incorrect: []
+    });
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{deck.title}</Text>
@@ -44,7 +51,7 @@ function QuizView(props) {
         {answeredCount} of {cardCount} cards answered
       </Text>
       {card && <QuizViewCard card={card} handleScores={handleScores} />}
-      {!card && <QuizViewScore score={score} handleSubmit={handleSubmit} />}
+      {!card && <QuizViewScore score={score} handleSubmit={handleSubmit} handleReset={handleReset} />}
     </View>
   );
 }
