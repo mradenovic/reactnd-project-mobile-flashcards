@@ -7,6 +7,7 @@ import AppView from './AppView';
 export default function App() {
   React.useEffect(() => {
     store.dispatch(asyncActions.initDecks());
+    store.dispatch(asyncActions.setPermision())
   });
 
   return (
