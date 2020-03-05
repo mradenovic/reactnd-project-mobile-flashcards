@@ -1,5 +1,7 @@
 import { AsyncStorage } from 'react-native';
+import * as Permissions from 'expo-permissions';
 import * as deckActions from '../reducers/decks';
+import * as permissionActions from '../reducers/permissions';
 import example from '../example';
 
 const KEY = '@mobile-flashcards:decks';
@@ -33,4 +35,19 @@ export const addScore = ({ id, score }) => async (dispatch, getState) => {
   const deck = getState().decks[id];
   const newDeck = { [deck.id]: deck };
   await AsyncStorage.mergeItem(KEY, JSON.stringify(newDeck));
+};
+
+export const setPermision = () => async (dispatch) => {
+  const permissions = await Permissions.getAsync(Permissions.NOTIFICATIONS)
+  const { status, canAskAgain } = permissions
+  console.log('permisssons', permissions)
+
+  if (status === 'granted' ) {
+    dispatch(permissionActions.setPermsission({ notifications: status }))
+  } else {
+    const newStatus = canAskAgain
+      ? (await Permissions.askAsync(Permissions.NOTIFICATIONS)).status
+      : status
+    dispatch(permissionActions.setPermission({ notifications: newStatus }))
+  }
 };
