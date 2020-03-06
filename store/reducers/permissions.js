@@ -5,7 +5,6 @@ const permissions = createSlice({
   initialState: {},
   reducers: {
     setPermission(state, action) {
-      console.log({...status, ...action.payload})
       return {
         ...state,
         ...action.payload
