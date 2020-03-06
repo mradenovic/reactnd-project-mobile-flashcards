@@ -38,13 +38,17 @@ export const addScore = ({ id, score }) => async (dispatch, getState) => {
 };
 
 export const setPermision = () => async (dispatch) => {
-  const { permissions: notifications } = await Permissions.getAsync(Permissions.NOTIFICATIONS)
-  const { status } = notifications
+  try {
+    const { permissions: notifications } = await Permissions.getAsync(Permissions.NOTIFICATIONS)
+    const { status } = notifications
 
-  if (status === 'granted' ) {
-    dispatch(permissionActions.setPermission( notifications ))
-  } else {
-    const { permissions: notifications } = await Permissions.askAsync(Permissions.NOTIFICATIONS)
-    dispatch(permissionActions.setPermission( notifications ))
+    if (status === 'granted') {
+      dispatch(permissionActions.setPermission(notifications))
+    } else {
+      const { permissions: notifications } = await Permissions.askAsync(Permissions.NOTIFICATIONS)
+      dispatch(permissionActions.setPermission(notifications))
+    }
+  } catch (e) {
+    console.warn(e);
   }
 };
