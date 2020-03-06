@@ -42,7 +42,7 @@ export const setPermision = () => async (dispatch) => {
   const { status } = notifications
 
   if (status === 'granted' ) {
-    dispatch(permissionActions.setPermsission( notifications ))
+    dispatch(permissionActions.setPermission( notifications ))
   } else {
     const { permissions: notifications } = await Permissions.askAsync(Permissions.NOTIFICATIONS)
     dispatch(permissionActions.setPermission( notifications ))
