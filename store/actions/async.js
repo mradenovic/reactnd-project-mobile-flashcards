@@ -1,10 +1,12 @@
 import { AsyncStorage } from 'react-native';
 import * as Permissions from 'expo-permissions';
+import { Notifications } from 'expo';
 import * as deckActions from '../reducers/decks';
 import * as permissionActions from '../reducers/permissions';
 import example from '../example';
 
 const KEY = '@mobile-flashcards:decks';
+const NOTIFICATION_KEY = '@mobile-flashcards:notifications';
 
 export const initDecks = () => async dispatch => {
   const data = await AsyncStorage.getItem(KEY);
@@ -39,16 +41,18 @@ export const addScore = ({ id, score }) => async (dispatch, getState) => {
 
 export const setPermision = () => async (dispatch) => {
   try {
-    const { permissions: notifications } = await Permissions.getAsync(Permissions.NOTIFICATIONS)
-    const { status } = notifications
+    const { permissions: { notifications } } = await Permissions.getAsync(Permissions.NOTIFICATIONS)
+    const { status } = notifications;
 
     if (status === 'granted') {
-      dispatch(permissionActions.setPermission(notifications))
+      dispatch(permissionActions.setPermission({ notifications }))
+      return Promise.resolve(notifications);
     } else {
-      const { permissions: notifications } = await Permissions.askAsync(Permissions.NOTIFICATIONS)
-      dispatch(permissionActions.setPermission(notifications))
+      const { permissions: { notifications } } = await Permissions.askAsync(Permissions.NOTIFICATIONS)
+      dispatch(permissionActions.setPermission({ notifications }))
+      return Promise.resolve(notifications);
     }
   } catch (e) {
-    console.warn(e);
+    return Promise.reject(e);
   }
 };
