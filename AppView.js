@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { SplashScreen } from 'expo';
 import * as Font from 'expo-font';
@@ -12,10 +13,12 @@ import DeckScreen from './screens/DeckScreen';
 import QuizScreen from './screens/QuizScreen';
 import CardFormScreen from './screens/CardFormScreen';
 import useLinking from './navigation/useLinking';
+import * as asyncActions from './store/actions/async';
 
 const Stack = createStackNavigator();
 
-export default function AppView(props) {
+function AppView(props) {
+  const { dispatch } = props;
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
   const [initialNavigationState, setInitialNavigationState] = React.useState();
   // const containerRef = React.useRef();
@@ -27,6 +30,10 @@ export default function AppView(props) {
       try {
         SplashScreen.preventAutoHide();
 
+        // Init state
+        dispatch(asyncActions.initDecks());
+        dispatch(asyncActions.setPermision());
+    
         // Load our initial navigation state
         setInitialNavigationState(await getInitialState());
 
@@ -72,3 +79,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 });
+
+export default connect()(AppView)
