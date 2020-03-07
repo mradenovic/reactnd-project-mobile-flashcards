@@ -32,7 +32,8 @@ function AppView(props) {
 
         // Init state
         dispatch(asyncActions.initDecks());
-        dispatch(asyncActions.setPermision());
+        await dispatch(asyncActions.setPermision());
+        await dispatch(asyncActions.setLocalNotification());
     
         // Load our initial navigation state
         setInitialNavigationState(await getInitialState());

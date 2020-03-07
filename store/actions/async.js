@@ -56,3 +56,50 @@ export const setPermision = () => async (dispatch) => {
     return Promise.reject(e);
   }
 };
+
+export const clearLocalNotification = () => async () => {
+  return AsyncStorage.removeItem(NOTIFICATION_KEY)
+    .then(Notifications.cancelAllScheduledNotificationsAsync)
+}
+
+export const setLocalNotification = () => async (dispatch, getState) => {
+  try {
+    const { permissions: { notifications: { status } } } = getState();
+    const notificationId = JSON.parse(await AsyncStorage.getItem(NOTIFICATION_KEY))
+
+    if (notificationId === null && status === 'granted') {
+      await Notifications.cancelAllScheduledNotificationsAsync()
+
+      let tomorrow = new Date()
+      tomorrow.setDate(tomorrow.getDate() + 1)
+      tomorrow.setHours(20)
+      tomorrow.setMinutes(0)
+      tomorrow.setSeconds(0);
+
+      const notificationId = await Notifications.scheduleLocalNotificationAsync(
+        {
+          title: 'Directions to Carnegie Hall',
+          body: "Practice, practice, practice...!",
+          ios: {
+            sound: true,
+          },
+          android: {
+            sound: true,
+            priority: 'high',
+            sticky: false,
+            vibrate: true,
+          }
+        },
+        {
+          time: tomorrow,
+          repeat: 'day',
+        }
+      )
+
+      await AsyncStorage.setItem(NOTIFICATION_KEY, JSON.stringify(notificationId))
+      return Promise.resolve(notificationId);
+    }
+  } catch (e) {
+    return Promise.reject(e);
+  }
+}
