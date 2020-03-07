@@ -26,7 +26,9 @@ function QuizView(props) {
     setScore({ ...score, [key]: [...score[key], id] });
   }
 
-  function handleSubmit() {
+  async function handleSubmit() {
+    await dispatch(asyncActions.clearLocalNotification())
+    dispatch(asyncActions.setLocalNotification())
     dispatch(asyncActions.addScore({
       id: deck.id,
       score: {
