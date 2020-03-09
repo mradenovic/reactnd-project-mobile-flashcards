@@ -39,17 +39,21 @@ export const addScore = ({ id, score }) => async (dispatch, getState) => {
   await AsyncStorage.mergeItem(KEY, JSON.stringify(newDeck));
 };
 
-export const setPermision = () => async (dispatch) => {
+export const setPermision = () => async dispatch => {
   try {
-    const { permissions: { notifications } } = await Permissions.getAsync(Permissions.NOTIFICATIONS)
+    const {
+      permissions: { notifications }
+    } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
     const { status } = notifications;
 
     if (status === 'granted') {
-      dispatch(permissionActions.setPermission({ notifications }))
+      dispatch(permissionActions.setPermission({ notifications }));
       return Promise.resolve(notifications);
     } else {
-      const { permissions: { notifications } } = await Permissions.askAsync(Permissions.NOTIFICATIONS)
-      dispatch(permissionActions.setPermission({ notifications }))
+      const {
+        permissions: { notifications }
+      } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+      dispatch(permissionActions.setPermission({ notifications }));
       return Promise.resolve(notifications);
     }
   } catch (e) {
@@ -58,48 +62,58 @@ export const setPermision = () => async (dispatch) => {
 };
 
 export const clearLocalNotification = () => async () => {
-  return AsyncStorage.removeItem(NOTIFICATION_KEY)
-    .then(Notifications.cancelAllScheduledNotificationsAsync)
-}
+  return AsyncStorage.removeItem(NOTIFICATION_KEY).then(
+    Notifications.cancelAllScheduledNotificationsAsync
+  );
+};
 
 export const setLocalNotification = () => async (dispatch, getState) => {
   try {
-    const { permissions: { notifications: { status } } } = getState();
-    const notificationId = JSON.parse(await AsyncStorage.getItem(NOTIFICATION_KEY))
+    const {
+      permissions: {
+        notifications: { status }
+      }
+    } = getState();
+    const notificationId = JSON.parse(
+      await AsyncStorage.getItem(NOTIFICATION_KEY)
+    );
 
     if (notificationId === null && status === 'granted') {
-      await Notifications.cancelAllScheduledNotificationsAsync()
+      await Notifications.cancelAllScheduledNotificationsAsync();
 
-      let tomorrow = new Date()
-      tomorrow.setDate(tomorrow.getDate() + 1)
-      tomorrow.setHours(20)
-      tomorrow.setMinutes(0)
+      let tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      tomorrow.setHours(20);
+      tomorrow.setMinutes(0);
       tomorrow.setSeconds(0);
 
       const notificationId = await Notifications.scheduleLocalNotificationAsync(
         {
           title: 'Directions to Carnegie Hall',
-          body: "Practice, practice, practice...!",
+          body: 'Practice, practice, practice...!',
           ios: {
-            sound: true,
+            sound: true
           },
           android: {
             sound: true,
             priority: 'high',
             sticky: false,
-            vibrate: true,
+            vibrate: true
           }
         },
         {
           time: tomorrow,
-          repeat: 'day',
+          repeat: 'day'
         }
-      )
+      );
 
-      await AsyncStorage.setItem(NOTIFICATION_KEY, JSON.stringify(notificationId))
+      await AsyncStorage.setItem(
+        NOTIFICATION_KEY,
+        JSON.stringify(notificationId)
+      );
       return Promise.resolve(notificationId);
     }
   } catch (e) {
     return Promise.reject(e);
   }
-}
+};
