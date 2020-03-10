@@ -87,24 +87,26 @@ export const setLocalNotification = () => async (dispatch, getState) => {
       tomorrow.setMinutes(0);
       tomorrow.setSeconds(0);
 
-      const notificationId = await Notifications.scheduleLocalNotificationAsync(
-        {
-          title: 'Directions to Carnegie Hall',
-          body: 'Practice, practice, practice...!',
-          ios: {
-            sound: true
-          },
-          android: {
-            sound: true,
-            priority: 'high',
-            sticky: false,
-            vibrate: true
-          }
+      const notification = {
+        title: 'Directions to Carnegie Hall',
+        body: 'Practice, practice, practice...!',
+        ios: {
+          sound: true
         },
-        {
-          time: tomorrow,
-          repeat: 'day'
+        android: {
+          sound: true,
+          priority: 'high',
+          sticky: false,
+          vibrate: true
         }
+      };
+
+      let options = { time: tomorrow };
+      options.repeat = 'day';
+
+      const notificationId = await Notifications.scheduleLocalNotificationAsync(
+        notification,
+        options
       );
 
       await AsyncStorage.setItem(
