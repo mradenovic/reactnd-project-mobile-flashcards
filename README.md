@@ -12,6 +12,8 @@ State of the app is managed with [Redux](https://redux.js.org/) and implementati
 
 ## Develop (or review project)
 
+**Note: The app ws tested on iOS 12 and Android 10 through Expo Client App** 
+
 The prefered way to work with the project is `yarn`, although `npm` will work too:
 
 * install all project dependencies with `yarn install`
