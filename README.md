@@ -14,8 +14,8 @@ State of the app is managed with [Redux](https://redux.js.org/) and implementati
 
 The prefered way to work with the project is `yarn`, although `npm` will work too:
 
-* install all project dependencies with `npm install`
-* start the development server with `npm start`
+* install all project dependencies with `yarn install`
+* start the development server with `yarn start`
 
 ## Backend Server
 
