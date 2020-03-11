@@ -1,4 +1,4 @@
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage, Platform } from 'react-native';
 import * as Permissions from 'expo-permissions';
 import { Notifications } from 'expo';
 import * as deckActions from '../reducers/decks';
@@ -91,7 +91,8 @@ export const setLocalNotification = () => async (dispatch, getState) => {
         title: 'Directions to Carnegie Hall',
         body: 'Practice, practice, practice...!',
         ios: {
-          sound: true
+          sound: true,
+          _dispalyInFOreground: true
         },
         android: {
           sound: true,
@@ -102,7 +103,10 @@ export const setLocalNotification = () => async (dispatch, getState) => {
       };
 
       let options = { time: tomorrow };
-      options.repeat = 'day';
+
+      if (Platform.OS === 'android') {
+        options.repeat = 'day';
+      }
 
       const notificationId = await Notifications.scheduleLocalNotificationAsync(
         notification,
